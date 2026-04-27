@@ -18,11 +18,14 @@ class User extends Authenticatable
      *
      * @var list<string>
      */
-    protected $fillable = [
-        'name',
-        'email',
-        'password',
-    ];
+   protected $fillable = [
+    'NamaLengkap',
+    'Username',
+    'Alamat',
+    'email',
+    'password',
+    'role',
+];
 
     /**
      * The attributes that should be hidden for serialization.
@@ -46,4 +49,10 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+public function peminjamans()
+{
+    return $this->hasMany(Peminjaman::class, 'UserID');
+}
+
 }
