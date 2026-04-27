@@ -9,13 +9,15 @@ return new class extends Migration
     /**
      * Run the migrations.
      */
-    public function up(): void
-    {
-        Schema::create('koleksi_pribadis', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
-        });
-    }
+   public function up(): void
+{
+    Schema::create('koleksi_pribadis', function (Blueprint $table) {
+        $table->id('KoleksiID');
+        $table->foreignId('UserID')->constrained('users');
+        $table->foreignId('BukuID')->constrained('bukus', 'BukuID');
+        $table->timestamps();
+    });
+}
 
     /**
      * Reverse the migrations.
