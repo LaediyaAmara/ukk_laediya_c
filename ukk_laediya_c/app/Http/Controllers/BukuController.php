@@ -115,4 +115,3 @@ public function index(Request $request)
     return view('buku.index', compact('bukus'));
 }
 }
-

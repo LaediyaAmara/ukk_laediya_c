@@ -19,9 +19,6 @@ return new class extends Migration
         $table->string('NamaLengkap');
         $table->text('Alamat');
         $table->timestamps(); // Ini buat catatan kapan dibuat
-        // Tambahkan ini: gunakan enum agar pilihan role terbatas & aman
-        $table->enum('role', ['admin', 'petugas', 'peminjam'])->default('peminjam');
-        $table->timestamps(); // Ini buat catatan kapan dibuat
     });
 
 
