@@ -9,17 +9,21 @@ return new class extends Migration
     /**
      * Run the migrations.
      */
-    public function up(): void
-    {
-        Schema::create('users', function (Blueprint $table) {
-            $table->id();
-            $table->string('name');
-            $table->string('email')->unique();
-            $table->timestamp('email_verified_at')->nullable();
-            $table->string('password');
-            $table->rememberToken();
-            $table->timestamps();
-        });
+   public function up(): void
+{
+    Schema::create('users', function (Blueprint $table) {
+        $table->id(); // Ini nomor urut otomatis
+        $table->string('Username')->unique();
+        $table->string('password');
+        $table->string('Email')->unique();
+        $table->string('NamaLengkap');
+        $table->text('Alamat');
+        $table->timestamps(); // Ini buat catatan kapan dibuat
+        // Tambahkan ini: gunakan enum agar pilihan role terbatas & aman
+        $table->enum('role', ['admin', 'petugas', 'peminjam'])->default('peminjam');
+        $table->timestamps(); // Ini buat catatan kapan dibuat
+    });
+
 
         Schema::create('password_reset_tokens', function (Blueprint $table) {
             $table->string('email')->primary();
